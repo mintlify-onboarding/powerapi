@@ -1,0 +1,145 @@
+---
+title: Authentication
+description: Authenticating with PowerAPI
+---
+
+
+### Using Email and Password
+
+You can generate an access token for our API using your email and password, with the following endpoint.
+
+  <Card title="Create an access token" icon="square" iconType="duotone" color="#00a400" href="api-reference/get-api-v-1-users-me">
+  </Card>
+
+The endpoint will return an access token that can be used to authenticate with our API, using the `Authorization: Bearer <token>` header.
+
+<Check>
+
+Email & password is the easiest way to authenticate with the API programmatically. However, for testing you can use the authentication widget below to log in and generate a token, this internally uses the same endpoint as above.
+
+</Check>
+
+<div className="core b b-solid rd-lg flex flex-col pt-3 pb-4 px-4 gap-3 b-gray-200 dark:b-neutral-6">
+  <h2 className="mb-1 b-b pb-3 text-center text-lg font-bold -mx-4 dark:b-neutral-6">
+    Authentication
+  </h2>
+  <div className="relative flex gap-3">
+    <form action="#" className="flex grow flex-col gap-3" noValidate="">
+      <div className="field field--outlined text-primary">
+        <div className="field-control">
+          <div className="field-input">
+            <label className="field-control--label" htmlFor="core-:r0:">
+              Email
+            </label>
+            <input
+              id="core-:r0:"
+              type="text"
+              className="field-input--input"
+              aria-describedby="core-:r0:-details"
+              name="email"
+              autoComplete="email"
+              defaultValue=""
+            />
+            <fieldset className="field-set" aria-hidden="true">
+              <legend className="field-set--legend">Email</legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div className="field field--outlined text-primary">
+        <div className="field-control">
+          <div className="field-input">
+            <label className="field-control--label" htmlFor="core-:r1:">
+              Password
+            </label>
+            <input
+              id="core-:r1:"
+              type="password"
+              className="field-input--input"
+              aria-describedby="core-:r1:-details"
+              name="password"
+              autoComplete="current-password"
+              defaultValue=""
+            />
+            <span className="field-input--append">
+              <button
+                type="button"
+                className="sheet sheet--contained sheet--full sheet--select btn btn--medium btn--icon"
+              >
+                <span className="btn--content inline-flex">
+                  <span className="i-mdi-eye-off core-2g2cjx" />
+                </span>
+              </button>
+            </span>
+            <fieldset className="field-set" aria-hidden="true">
+              <legend className="field-set--legend">Password</legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center gap-2">
+        <button
+          type="submit"
+          className="sheet sheet--contained sheet--normal sheet--select bg-primary text-white btn btn--medium"
+        >
+          <span className="btn--content truncate">Login with Password</span>
+        </button>
+      </div>
+    </form>
+    <div className="flex flex-col items-center -my-2">
+      <div className="grow b-r dark:b-neutral-6" />
+      <div className="mb-1 dark:c-neutral-5">or</div>
+      <div className="grow b-r dark:b-neutral-6" />
+    </div>
+    <form
+      action="#"
+      className="grow flex-col justify-start gap-3"
+      noValidate=""
+    >
+      <div className="field field--outlined field--grow text-primary">
+        <div className="field-control">
+          <div className="field-input">
+            <label className="field-control--label" htmlFor="core-:r2:">
+              Token
+            </label>
+            <input
+              id="core-:r2:"
+              type="password"
+              className="field-input--input"
+              aria-describedby="core-:r2:-details"
+              name="token"
+              defaultValue=""
+            />
+            <span className="field-input--append" />
+            <span className="field-input--append">
+              <button
+                type="button"
+                className="sheet sheet--contained sheet--full sheet--select btn btn--medium btn--icon"
+              >
+                <span className="btn--content inline-flex">
+                  <span className="i-mdi-eye-off core-2g2cjx" />
+                </span>
+              </button>
+            </span>
+            <fieldset className="field-set" aria-hidden="true">
+              <legend className="field-set--legend">Token</legend>
+            </fieldset>
+          </div>
+          <p className="field-control--details" id="core-:r2:-details">
+            <span className="c-error">Unauthenticated</span>
+          </p>
+        </div>
+        <span className="field--append">
+          <button
+            type="button"
+            className="sheet sheet--contained sheet--full sheet--select btn btn--medium btn--icon"
+          >
+            <span className="btn--content inline-flex">
+              <span className="i-mdi-content-copy core-2g2cjx" />
+            </span>
+          </button>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>

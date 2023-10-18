@@ -1,0 +1,87 @@
+---
+title: Getting Started
+description: Guide to getting started with the API
+---
+
+## Create your first account
+
+To start using the API and creating additional users you will need a PowerAPI account. To create an account, visit our [website](https://app.powerapi.com) and click the `Sign Up` button.
+
+## Using the API
+
+Now that you have a user account you can start using the API. You will need to obtain an access token to make requests to the API.
+
+### Authentication
+
+See [Authentication](/docs/authentication#using-email-and-password) for more information on obtaining an access token.
+
+### Making Requests
+
+Some good endpoints to check if you were successful so far are:
+<CardGroup cols={3}>
+  <Card title="Get current user" icon="square" iconType="duotone" color="#313ea5" href="api-reference/get-api-v-1-users-me">
+  </Card>
+  <Card title="Get users business" icon="square" iconType="duotone" color="#313ea5" href="api-reference/get-api-v-1-users-me">
+  </Card>
+  <Card title="Get active user" icon="square" iconType="duotone" color="#313ea5" href="api-reference/get-api-v-1-users-me">
+  </Card>
+</CardGroup>
+
+All you need to do is attach the token in the `Authorization: Bearer <token>` header, or if you are using the requests panel in the API docs then add the token to the "Bearer Token" field.
+
+## Creating additional users
+
+<Note>
+
+Creating an account via the API requires an access token, see [Authentication](/docs/authentication) for more information.
+You will need to have a valid account first before you can create users.
+
+</Note>
+
+The following endpoint can be used to create a user via the API.
+  
+  <Card title="Create a user" icon="square" iconType="duotone" color="#00a400" href="api-reference/get-api-v-1-users-me">
+  </Card>
+
+### Virtual users
+
+You can create "virtual" users, which are user accounts not linked to the users actual email. For example, instead of using the users actual email you can use a fake email like `<account-name>@<my-organisation>.com` (3243243214@organisation.com).
+
+Then when you a create account for that email you can store that accounts password in your database. This is because the account is not linked to the actual users email they will not be able to log in to the PowerAPI platform themselves, so you can treat the password like a long-lived access token. This should be used in combination with [Disabling email verification](#disabling-email-verification) explained below.
+
+### Disabling email verification
+
+When creating a user, in particular, a virtual user, you may want to disable the email verification step. This can be done by setting the `data.attributes.source` field to `partner` in the request body when using the [Create a user](/docs/v1/post-api-v-1-users) endpoint.
+
+```json title="Disable email verification when creating a user"
+{
+  "data": {
+    "type": "users",
+    "attributes": {
+      "email": "test@example.com",
+      "password": "12345678",
+      "password_confirmation": "12345678",
+      // highlight-next-line
+      "source": "partner",
+      "language": "en",
+      "terms_agreement": true
+    }
+  }
+}
+```
+
+## Create a Business
+
+Once you have users you will likely want to create a business, and set additional fields on it. This could also be a good time to connect the users and businesses to the presence and review management features.
+
+<EmbedNavItem id="v1/post-api-v-1-businesses" mb />
+
+<EmbedNavItem id="v1/post-api-v-1-open-periods" />
+<EmbedNavItem id="v1/post-api-v-1-special-open-periods" mb />
+
+<EmbedNavItem id="v1/post-api-v-1-users-id-integrations-rpm" />
+<EmbedNavItem id="v1/post-api-v-1-businesses-id-integrations-rpm" mb />
+
+## Frontend SDK
+
+You can embed any part of our frontend into your application, by either manually fetching the access token for the user or via our login page. See [Frontend SDK](/docs/sdks/frontend-sdk) for more information on how to embed the Frontend SDK into your application.

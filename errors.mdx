@@ -1,0 +1,322 @@
+---
+title: Errors
+description: This document describes how errors are handled in our API.
+---
+
+API can return various errors. They are divided by `HTTP` error code:
+
+<Note>
+
+It's important to note that this is _NOT_ a comprehensive list of all the errors that can occur in the application. This is just the list of the most important ones.
+
+</Note>
+
+### Access token expired
+
+**Recommended client action:** use `refresh_token` provided with `access_token` in order to keep user logged in.
+
+**Response:**
+
+```json
+{
+  "error": "The access token expired"
+}
+```
+
+---
+
+### 400 Bad Request
+
+These errors signal that the data structure of the request did not meet servers expectations.
+
+**Recommended action:** An error is probably in the client code itself, please check if your implementation follows JSONAPI standard and our API documentation.
+
+**Response:**
+
+- We expect that only one attribute - either `business` or `review` will be sent, but both were present.
+
+```json
+{
+  "errors": [
+    {
+      "title": "business, review are mutually exclusive",
+      "detail": null,
+      "code": "mutual_exclusion",
+      "status": 400
+    }
+  ]
+}
+```
+
+- Endpoint requires that `parent_resource` will be present, but it's not.
+
+```json
+{
+  "errors": [
+    {
+      "title": "data[attributes][parent_resource] is missing",
+      "detail": null,
+      "code": "presence",
+      "status": 400
+    }
+  ]
+}
+```
+
+<Note>
+
+It's important to note here that this error is not about user not filling some field, but rather that entire `parent_resource` attribute was not present in the request structure itself when it was required.
+
+</Note>
+
+
+### 401 Unauthorized
+
+Can occur in three situations:
+
+**Recommended client action:** use your client id and secret to fetch access token.
+
+```json title="Non authorized application tried to access a protected endpoint"
+{
+  "errors": [
+    {
+      "title": "Not authenticated",
+      "detail": null,
+      "code": "not_authenticated",
+      "status": 401
+    }
+  ]
+}
+```
+
+**Recommended client action:** redirect user to login page and instruct them to sign in.
+
+```json title="Someone not logged in tried to access a protected endpoint"
+{
+  "errors": [
+    {
+      "title": "Not authenticated",
+      "detail": null,
+      "code": "not_authenticated",
+      "status": 401
+    }
+  ]
+}
+```
+
+---
+
+### 403 Forbidden
+
+A logged-in user tried to access a resource which they do not own / have no access to.
+
+**Recommended action for clients:** Inform a user that they do not have access to the requested resource action.
+
+```json title="User tried to edit a business which he/she does not own."
+{
+  "errors": [
+    {
+      "title": "You need to be the owner of this record",
+      "detail": null,
+      "code": "unauthorized",
+      "status": 403
+    }
+  ]
+}
+```
+
+```json title="User which is not a Food Detective tried to create a review."
+{
+  "errors": [
+    {
+      "title": "You need to be Food Detective",
+      "detail": null,
+      "code": "unauthorized",
+      "status": 403
+    }
+  ]
+}
+```
+
+---
+
+### 404 Not Found
+
+Can occur in two situations:
+
+**Recommended action for clients:** Inform a user that the record they tried to access is no longer available.
+
+```json title="Requested record was not found in the database"
+{
+  "errors": [
+    {
+      "title": "Record not found",
+      "detail": null,
+      "code": "record_not_found",
+      "status": 404
+    }
+  ]
+}
+```
+
+**Recommended action for clients:**Likely an error in client code itself since users will not type API URLs themselves.
+
+```json title="Route was not found / invalid URL"
+{
+  "errors": [
+    {
+      "title": "Route not found",
+      "detail": null,
+      "code": "route_not_found",
+      "status": 404
+    }
+  ]
+}
+```
+
+---
+
+### 405 Method Not Allowed
+
+This error occurs when an existing API endpoint is requested with wrong HTTP verb (e.g. `POST` instead of `PATCH`) or not supported HTTP verb is used.
+
+**Recommended action for clients:**Likely an error in client code itself since users will not choose an HTTP verb themselves.
+
+```json
+{
+  "errors": [
+    {
+      "title": "Invalid HTTP verb",
+      "detail": null,
+      "code": "invalid_http_verb",
+      "status": 405
+    }
+  ]
+}
+```
+
+---
+
+### 406 Not Acceptable
+
+HTTP `Content-Type` header was not equal to `application/vnd.api+json`
+
+**Recommended action for clients:** probably an error in client code itself since users will not choose an HTTP `Content-Type` header themselves.
+
+```json
+{
+  "error": "The requested content-type 'application/vnd.api' is not supported."
+}
+```
+
+---
+
+### 409 Conflict
+
+The request could not be completed because of some kind of conflict. There are two types of conflicts that can trigger this error:
+
+#### Database conflict
+
+Server tried to create a database record with ID already present in the database.
+
+**Recommended action for clients:** Try to send a request again, there is high chance it will succeed this time.
+
+```json title="Database conflict"
+{
+  "errors": [
+    {
+      "title": "PG::UniqueViolation",
+      "detail": "Duplicate key value violates unique constraint",
+      "code": "database_conflict",
+      "status": 409
+    }
+  ]
+}
+```
+
+#### ID in URL does not match ID in the request body
+
+If `data[id]` in the request body does not match the ID in the URL then this error is returned.
+
+**Recommended action for clients:** An error is probably in the client code itself, please check if your implementation follows JSONAPI standard and our API documentation.
+
+```json title="ID conflict"
+{
+  "errors": [
+    {
+      "title": "URL/params ID conflict",
+      "detail": "ID in URL is different from ID in params",
+      "code": "url_params_id_conflict",
+      "status": 409
+    }
+  ]
+}
+```
+
+---
+
+### 415 Unsupported Media Type
+
+This error occurs when `Accept` HTTP header is not `application/vnd.api+json`.
+
+**Recommended action for clients:**Likely an error in client code itself since users will not choose an HTTP `Accept` header themselves.
+
+```json
+{
+  "errors": [
+    {
+      "title": "Unsupported Media Type",
+      "detail": null,
+      "code": "unsupported_media_type",
+      "status": 415
+    }
+  ]
+}
+```
+
+---
+
+### 422 Unprocessable Entity
+
+Validation error. The request body was correct but values of given attributes were not.
+
+**Recommended action for clients:** A user typed incorrect data, request them to fix it. Use provided `title` attribute in the response to guide them which field they need to correct. Additionally `code` and `meta` attributes can be used in order to tell them what kind of data server expects.
+
+```json
+{
+  "errors": [
+    {
+      "title": "name",
+      "detail": "Name can't be blank",
+      "code": "blank",
+      "status": 422,
+      "meta": {}
+    }
+  ]
+}
+```
+
+---
+
+### 500 Internal Server Error
+
+In case something went horribly wrong on the server side.
+
+**Recommended action for clients:** Inform a user that something went wrong on the server side, and they should try again in the near future. You can also inform them that we are working in order to fix that.
+
+```json
+{
+  "errors": [
+    {
+      "title": "StandardError",
+      "detail": null,
+      "code": "server_error",
+      "status": 500,
+      "description": "[error message (only in development environment)]",
+      "backtrace": [
+        "[array of files and lines which lead to this error occurring (only in development environment)]"
+      ]
+    }
+  ]
+}
+```

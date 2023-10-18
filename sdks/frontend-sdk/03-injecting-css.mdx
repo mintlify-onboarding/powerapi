@@ -1,0 +1,123 @@
+---
+title: Injecting CSS
+---
+
+import ConvertCSS from "../../../src/components/ConvertCSS";
+
+CSS can be injected through the `css` query parameter, as mentioned in [Customizing the UI](./02-customization.md). The value of the query parameter can be a URL to an external stylesheet or a data URL.
+
+## External stylesheet
+
+To embed an external stylesheet, simply provide the URL to the stylesheet as the value of the `css` query parameter. You will need to host the stylesheet yourself publicly, as we do not provide a way to upload stylesheets. You may need to URL encode the stylesheet URL unless the tool you are using does it for you.
+
+```url title="Injecting an external stylesheet" className=wrap
+https://app.powerapi.com/business/basic-information?access_token=my_token&css=https://example.com/style.css
+```
+
+## Data URL
+
+HTML stylesheet links can also be encoded as a data URL. This is useful if you want to embed the stylesheet directly in the URL. For production, it is recommended to use an external stylesheet, as it will perform better, additionally, URLs have a length limit, so you may not be able to embed all of your styles, you can use a [css-minimizer](https://lightningcss.dev) to fit more into the URL.
+
+In this example we will inject the following CSS.
+
+```css
+.sheet {
+  background-color: #283593 !important;
+}
+```
+
+You will need to base64 encode the CSS and prepend `data:text/css;base64,` to the encoded string.
+
+```url title="Creating a data URL" className=wrap
+# base64 encode the CSS
+LnNoZWV0IHsKICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjgzNTkzICFpbXBvcnRhbnQ7Cn0=
+# prepend with `data:text/css;base64,` to create the data URL
+data:text/css;base64,LnNoZWV0IHsKICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjgzNTkzICFpbXBvcnRhbnQ7Cn0=
+# finally append to the desired URL
+https://app.powerapi.com/business/basic-information?access_token=my_token&css=data:text/css;base64,LnNoZWV0IHsKICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjgzNTkzICFpbXBvcnRhbnQ7Cn0=
+```
+
+To simplify this process you can use the live editor below which will automatically encode the CSS and create the data URL for you. It provides syntax highlighting but does not perform any validation, or minification of the CSS. You can also use this [website](https://base64.guru/converter/encode/css) to encode the CSS, it will generate the same output as below, but is less user-friendly.
+
+<ConvertCSS />
+
+## CSS Precedence
+
+:::info Stability
+
+Currently, we can't make any guarantees about the stability of the html structure, class names, or CSS precedence. We are working on reducing our CSS specificity to make overriding styles easier. Additionally, we are working on a way to provide a stable API for customizing some parts of the UI through CSS variables, e.g. colors, spacing.
+
+:::
+
+The injected CSS will be the last one to be applied, so it will override styles of the same precedence. Currently most of our styles have a precedence of `1 1 0` as they are all prefixed with `#root :is(...)`, like in the example below.
+
+```css
+#root :is(.text-primary) {
+  color: red;
+}
+```
+
+**Dark Mode**
+
+You can provide dark-mode styles using the `dark` class which is set on the `html` element.
+
+```css
+#root :is(.dark .text-primary) {
+  color: red;
+}
+```
+
+## Live Demo
+
+You can see more examples on the [Live Demos](./04-live-demos.md) page.
+
+```jsx live
+function PowerAPI() {
+  const PAGE = "/business/basic-information";
+  const CSS_URL =
+    "data:text/css;base64,LnNoZWV0IHsKICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjgzNTkzICFpbXBvcnRhbnQ7Cn0=";
+
+  // add email and password to fetch token
+  const EMAIL = "";
+  const PASSWORD = "";
+  // or set token here manually
+  const [token, setToken] = useState("");
+
+  const url = new URL(PAGE, POWERAPI_URL);
+  url.searchParams.append("access_token", token);
+  url.searchParams.append("hide_header", "true"); // hide the header
+  url.searchParams.append("hide_navigation", "true"); // hide navigation
+  url.searchParams.append("hide_tabs", "false"); // hide top-level tabs
+  url.searchParams.append("css", CSS_URL); // add custom css
+
+  useEffect(() => {
+    if (EMAIL && PASSWORD)
+      fetch(`${BACKEND_URL}/oauth/token`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/vnd.api+json",
+          Accept: "application/vnd.api+json",
+        },
+        body: JSON.stringify({
+          scope: "trusted public",
+          grant_type: "password",
+          email: EMAIL,
+          password: PASSWORD,
+        }),
+      }).then(async (res) => {
+        setToken((await res.json()).access_token);
+      });
+  }, []);
+
+  return !token ? (
+    <div>A token is required to display the iframe</div>
+  ) : (
+    <iframe
+      title="PowerAPI"
+      src={url.toString()}
+      width="100%"
+      height={512}
+    ></iframe>
+  );
+}
+```

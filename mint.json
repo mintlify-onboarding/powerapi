@@ -1,0 +1,369 @@
+{
+    "name": "Power API",
+    "logo": {
+      "light": "/logo/light.png",
+      "dark": "/logo/dark.png"
+    },
+    "favicon": "/favicon.svg",
+    "colors": {
+      "primary": "#0031FF",
+      "light": "#4C68FF",
+      "dark": "#0031FF"
+    },
+    "topbarCtaButton": {
+      "name": "Book a Call",
+      "url": "https://share.hsforms.com/1UW67s4YOTTKvC2NIum5X0w3cpmu"
+    },
+    "tabs": [
+        {
+            "name": "API Reference",
+            "url": "api-reference"
+        }
+    ],
+    "navigation": [
+        {
+            "group": "Welcome to PowerAPI",
+            "pages": [
+                "getting-started",
+                "errors"
+            ]
+        },
+        {
+            "group": "Authentication",
+            "pages": [
+              "api-reference/powerapi-reference-1/authentication/create-an-access-token"
+            ]
+          },
+          {
+            "group": "Bookings",
+            "pages": [
+              "api-reference/powerapi-reference-1/bookings/return-a-booking",
+              "api-reference/powerapi-reference-1/bookings/update-a-booking"
+            ]
+          },
+          {
+            "group": "Businesses",
+            "pages": [
+              "api-reference/powerapi-reference-1/businesses/get-api-users-permitted-businesses",
+              "api-reference/powerapi-reference-1/businesses/return-a-business",
+              "api-reference/powerapi-reference-1/businesses/delete-a-business",
+              "api-reference/powerapi-reference-1/businesses/update-a-business",
+              "api-reference/powerapi-reference-1/businesses/get-published-businesses-with-similar-location",
+              "api-reference/powerapi-reference-1/businesses/get-all-invoices-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/get-external-service-links-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/get-all-deliveries-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/get-a-delivery-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/create-a-business",
+              "api-reference/powerapi-reference-1/businesses/connect-given-business-to-rpm",
+              "api-reference/powerapi-reference-1/businesses/disconnect-the-business-from-rpm",
+              "api-reference/powerapi-reference-1/businesses/update-given-business-on-rpm",
+              "api-reference/powerapi-reference-1/businesses/return-all-exclusive-suppliers-for-a-specific-business",
+              "api-reference/powerapi-reference-1/businesses/return-all-members-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/return-favorite-suppliers-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/return-preferred-partners-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/return-all-business-partners-used-to-make-orders",
+              "api-reference/powerapi-reference-1/businesses/return-all-orders-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/return-all-supplier-orders-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/return-orkestro-delivery-price",
+              "api-reference/powerapi-reference-1/businesses/upload-business-menu-to-hubrise-catalog",
+              "api-reference/powerapi-reference-1/businesses/download-catalog-for-business-from-hubrise",
+              "api-reference/powerapi-reference-1/businesses/return-all-privatisations-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/return-all-payments-for-orders-within-specific-business",
+              "api-reference/powerapi-reference-1/businesses/return-all-reservations-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/return-all-tables-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/return-all-subscriptions-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/return-all-clients-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/return-all-guests-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/create-a-guest",
+              "api-reference/powerapi-reference-1/businesses/get-a-guest",
+              "api-reference/powerapi-reference-1/businesses/delete-a-guest",
+              "api-reference/powerapi-reference-1/businesses/update-a-guest",
+              "api-reference/powerapi-reference-1/businesses/return-all-reservations-for-given-guest-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/todays-worst-selling-dishes-for-specific-business",
+              "api-reference/powerapi-reference-1/businesses/return-revenue-breakdown-for-dashboard",
+              "api-reference/powerapi-reference-1/businesses/get-business-earnings",
+              "api-reference/powerapi-reference-1/businesses/get-best-sales-for-a-business",
+              "api-reference/powerapi-reference-1/businesses/return-average-ticket-size-values-for-dashboard"
+            ]
+          },
+          {
+            "group": "Cities",
+            "pages": [
+              "api-reference/powerapi-reference-1/cities/return-all-cities-fetched-from-published-businesses"
+            ]
+          },
+          {
+            "group": "City With Countries",
+            "pages": [
+              "api-reference/powerapi-reference-1/city_with_countries/return-all-cities-with-country-fetched-from-published-businesses"
+            ]
+          },
+          {
+            "group": "Deliveries",
+            "pages": [
+              "api-reference/powerapi-reference-1/deliveries/return-a-delivery",
+              "api-reference/powerapi-reference-1/deliveries/delete-a-delivery",
+              "api-reference/powerapi-reference-1/deliveries/update-a-delivery",
+              "api-reference/powerapi-reference-1/deliveries/create-a-delivery-of-a-business"
+            ]
+          },
+          {
+            "group": "External Service Links",
+            "pages": [
+              "api-reference/powerapi-reference-1/external_service_links/create-an-external-service-link",
+              "api-reference/powerapi-reference-1/external_service_links/delete-an-external-service-link",
+              "api-reference/powerapi-reference-1/external_service_links/update-an-external-service-link"
+            ]
+          },
+          {
+            "group": "External Services",
+            "pages": [
+              "api-reference/powerapi-reference-1/external_services/registers-a-click-event-for-external-service",
+              "api-reference/powerapi-reference-1/external_services/return-all-external-services",
+              "api-reference/powerapi-reference-1/external_services/return-an-external-service"
+            ]
+          },
+          {
+            "group": "Groups",
+            "pages": [
+              "api-reference/powerapi-reference-1/groups/return-all-groups",
+              "api-reference/powerapi-reference-1/groups/return-a-group",
+              "api-reference/powerapi-reference-1/groups/return-published-businesses-for-specific-group"
+            ]
+          },
+          {
+            "group": "Intelligence Notifications",
+            "pages": [
+              "api-reference/powerapi-reference-1/intelligence_notifications/returns-notifications-for-given-business"
+            ]
+          },
+          {
+            "group": "Members",
+            "pages": [
+              "api-reference/powerapi-reference-1/members/create-a-member-of-a-business",
+              "api-reference/powerapi-reference-1/members/reject-a-member-of-a-business",
+              "api-reference/powerapi-reference-1/members/accept-a-member-of-a-business",
+              "api-reference/powerapi-reference-1/members/return-a-member",
+              "api-reference/powerapi-reference-1/members/delete-a-member",
+              "api-reference/powerapi-reference-1/members/update-a-member"
+            ]
+          },
+          {
+            "group": "Notifications",
+            "pages": [
+              "api-reference/powerapi-reference-1/notifications/return-a-notification",
+              "api-reference/powerapi-reference-1/notifications/mark-a-notification-as-read"
+            ]
+          },
+          {
+            "group": "Open Periods",
+            "pages": [
+              "api-reference/powerapi-reference-1/open_periods/create-an-open-period-for-a-business",
+              "api-reference/powerapi-reference-1/open_periods/delete-an-openperiod",
+              "api-reference/powerapi-reference-1/open_periods/update-open-period"
+            ]
+          },
+          {
+            "group": "Order Periods",
+            "pages": [
+              "api-reference/powerapi-reference-1/order_periods/create-an-order-period-for-a-business",
+              "api-reference/powerapi-reference-1/order_periods/delete-an-orderperiod",
+              "api-reference/powerapi-reference-1/order_periods/update-open-period"
+            ]
+          },
+          {
+            "group": "Orders",
+            "pages": [
+              "api-reference/powerapi-reference-1/orders/create-a-order-of-a-business",
+              "api-reference/powerapi-reference-1/orders/return-a-order",
+              "api-reference/powerapi-reference-1/orders/delete-a-order",
+              "api-reference/powerapi-reference-1/orders/update-an-order",
+              "api-reference/powerapi-reference-1/orders/reject-an-order",
+              "api-reference/powerapi-reference-1/orders/return-all-elements-for-specific-order",
+              "api-reference/powerapi-reference-1/orders/return-an-orkestro-order",
+              "api-reference/powerapi-reference-1/orders/create-an-orkestro-order"
+            ]
+          },
+          {
+            "group": "Partners",
+            "pages": [
+              "api-reference/powerapi-reference-1/partners/get-apiv1partners",
+              "api-reference/powerapi-reference-1/partners/return-all-partners-with-wholesaler-category",
+              "api-reference/powerapi-reference-1/partners/return-all-active-partners-with-status-available-and-coming-soon",
+              "api-reference/powerapi-reference-1/partners/disconnects-the-user-from-the-partner",
+              "api-reference/powerapi-reference-1/partners/link-the-user-to-the-partner",
+              "api-reference/powerapi-reference-1/partners/return-a-partner",
+              "api-reference/powerapi-reference-1/partners/creates-a-click-event-for-partner"
+            ]
+          },
+          {
+            "group": "Partner Integrations",
+            "pages": [
+              "api-reference/powerapi-reference-1/partner_integrations/delete-a-partner-integration-with-a-business",
+              "api-reference/powerapi-reference-1/partner_integrations/create-a-partner-integration-with-a-business",
+              "api-reference/powerapi-reference-1/partner_integrations/delete-a-orkestro-partner-integration-for-a-given-business",
+              "api-reference/powerapi-reference-1/partner_integrations/create-orkestro-partner-integration-with-a-business",
+              "api-reference/powerapi-reference-1/partner_integrations/download-menu-from-uber-eats",
+              "api-reference/powerapi-reference-1/partner_integrations/upload-menu-to-uber-eats",
+              "api-reference/powerapi-reference-1/partner_integrations/delete-uber-eats-partner-integration-for-a-given-business",
+              "api-reference/powerapi-reference-1/partner_integrations/create-uber-eats-partner-integration-with-a-business"
+            ]
+          },
+          {
+            "group": "Pictures",
+            "pages": [
+              "api-reference/powerapi-reference-1/pictures/create-a-photo-for-business-or-review-or-dish",
+              "api-reference/powerapi-reference-1/pictures/delete-a-picture"
+            ]
+          },
+          {
+            "group": "Preferred Partners",
+            "pages": [
+              "api-reference/powerapi-reference-1/preferred_partners/create-a-preferred-partner-for-business",
+              "api-reference/powerapi-reference-1/preferred_partners/delete-a-preferred-partner-for-business"
+            ]
+          },
+          {
+            "group": "Privatisations",
+            "pages": [
+              "api-reference/powerapi-reference-1/privatisations/reject-a-privatisation-offer",
+              "api-reference/powerapi-reference-1/privatisations/accept-a-privatisation-offer",
+              "api-reference/powerapi-reference-1/privatisations/create-a-privatisation-of-a-business",
+              "api-reference/powerapi-reference-1/privatisations/send-email-with-a-privatisation-offer",
+              "api-reference/powerapi-reference-1/privatisations/return-a-privatisation",
+              "api-reference/powerapi-reference-1/privatisations/delete-a-privatisation",
+              "api-reference/powerapi-reference-1/privatisations/update-privatisation"
+            ]
+          },
+          {
+            "group": "Products",
+            "pages": [
+              "api-reference/powerapi-reference-1/products/create-a-must-eat-product-for-business-or-review",
+              "api-reference/powerapi-reference-1/products/delete-a-product",
+              "api-reference/powerapi-reference-1/products/update-product"
+            ]
+          },
+          {
+            "group": "Reservations",
+            "pages": [
+              "api-reference/powerapi-reference-1/reservations/create-a-reservation-of-a-business",
+              "api-reference/powerapi-reference-1/reservations/check-for-available-seats-for-a-particular-hour-in-a-restaurant",
+              "api-reference/powerapi-reference-1/reservations/check-for-available-hours-in-a-restaurant",
+              "api-reference/powerapi-reference-1/reservations/return-a-reservation",
+              "api-reference/powerapi-reference-1/reservations/delete-a-reservation",
+              "api-reference/powerapi-reference-1/reservations/update-reservation",
+              "api-reference/powerapi-reference-1/reservations/reject-a-reservation",
+              "api-reference/powerapi-reference-1/reservations/patch-apiv1reservations-cancel"
+            ]
+          },
+          {
+            "group": "Special Open Periods",
+            "pages": [
+              "api-reference/powerapi-reference-1/special_open_periods/create-a-special-open-period-for-a-business",
+              "api-reference/powerapi-reference-1/special_open_periods/delete-an-specialopenperiod",
+              "api-reference/powerapi-reference-1/special_open_periods/update-special-open-period"
+            ]
+          },
+          {
+            "group": "Supplier Categories",
+            "pages": [
+              "api-reference/powerapi-reference-1/supplier_categories/return-all-available-suppliers-categories"
+            ]
+          },
+          {
+            "group": "Supplier Elements",
+            "pages": [
+              "api-reference/powerapi-reference-1/supplier_elements/create-a-supplier-element-of-a-supplier-order"
+            ]
+          },
+          {
+            "group": "Supplier Orders",
+            "pages": [
+              "api-reference/powerapi-reference-1/supplier_orders/create-a-supplier-order-for-current-business",
+              "api-reference/powerapi-reference-1/supplier_orders/returns-a-supplier-order",
+              "api-reference/powerapi-reference-1/supplier_orders/sends-email-notification-about-order-creation-to-the-supplier-email-address"
+            ]
+          },
+          {
+            "group": "Supplier Catalogs",
+            "pages": [
+              "api-reference/powerapi-reference-1/supplier_catalogs/create-a-supplier-catalog-for-current-business",
+              "api-reference/powerapi-reference-1/supplier_catalogs/returns-a-supplier-catalog",
+              "api-reference/powerapi-reference-1/supplier_catalogs/delete-a-supplier-catalog",
+              "api-reference/powerapi-reference-1/supplier_catalogs/update-a-supplier-catalog"
+            ]
+          },
+          {
+            "group": "Supplier Product Categories",
+            "pages": [
+              "api-reference/powerapi-reference-1/supplier_product_categories/return-all-available-suppliers-product-categories"
+            ]
+          },
+          {
+            "group": "Supplier Product Subcategories",
+            "pages": [
+              "api-reference/powerapi-reference-1/supplier_product_subcategories/return-all-available-suppliers-product-subcategories"
+            ]
+          },
+          {
+            "group": "Supplier Products",
+            "pages": [
+              "api-reference/powerapi-reference-1/supplier_products/return-all-available-suppliers-products",
+              "api-reference/powerapi-reference-1/supplier_products/create-a-product-of-a-supplier",
+              "api-reference/powerapi-reference-1/supplier_products/update-a-product-from-default-catalog-of-a-supplier",
+              "api-reference/powerapi-reference-1/supplier_products/update-a-product-from-custom-catalog-of-a-supplier"
+            ]
+          },
+          {
+            "group": "Suppliers",
+            "pages": [
+              "api-reference/powerapi-reference-1/suppliers/return-all-active-suppliers",
+              "api-reference/powerapi-reference-1/suppliers/create-a-supplier",
+              "api-reference/powerapi-reference-1/suppliers/delete-a-supplier",
+              "api-reference/powerapi-reference-1/suppliers/update-a-supplier",
+              "api-reference/powerapi-reference-1/suppliers/return-all-supplier-orders-for-specific-supplier",
+              "api-reference/powerapi-reference-1/suppliers/return-all-supplier-catalogs-for-specific-supplier"
+            ]
+          },
+          {
+            "group": "Tables",
+            "pages": [
+              "api-reference/powerapi-reference-1/tables/create-a-table-of-a-business",
+              "api-reference/powerapi-reference-1/tables/delete-a-table",
+              "api-reference/powerapi-reference-1/tables/update-table"
+            ]
+          },
+          {
+            "group": "Users",
+            "pages": [
+              "api-reference/powerapi-reference-1/users/delete-current-user",
+              "api-reference/powerapi-reference-1/users/get-current-user",
+              "api-reference/powerapi-reference-1/users/delete-current-user-1",
+              "api-reference/powerapi-reference-1/users/update-current-user",
+              "api-reference/powerapi-reference-1/users/reset-users-password",
+              "api-reference/powerapi-reference-1/users/request-to-become-food-detective",
+              "api-reference/powerapi-reference-1/users/authenticate-pusher-for-the-user",
+              "api-reference/powerapi-reference-1/users/update-all-users-notifications-as-read",
+              "api-reference/powerapi-reference-1/users/return-notifications-of-current-user",
+              "api-reference/powerapi-reference-1/users/get-users-businesses",
+              "api-reference/powerapi-reference-1/users/get-users-business",
+              "api-reference/powerapi-reference-1/users/return-all-addresses-for-currently-logged-in-user",
+              "api-reference/powerapi-reference-1/users/return-a-address-of-currently-logged-in-user",
+              "api-reference/powerapi-reference-1/users/delete-unconfirmed-users-account-using-delete-token-from-email",
+              "api-reference/powerapi-reference-1/users/confirm-user-with-a-token",
+              "api-reference/powerapi-reference-1/users/reset-users-password-using-reset-password-token-from-email",
+              "api-reference/powerapi-reference-1/users/recover-users-password",
+              "api-reference/powerapi-reference-1/users/request-confirmation-mail",
+              "api-reference/powerapi-reference-1/users/create-a-user",
+              "api-reference/powerapi-reference-1/users/get-a-user",
+              "api-reference/powerapi-reference-1/users/connect-user-to-rpm",
+              "api-reference/powerapi-reference-1/users/disconnect-the-user-from-rpm"
+            ]
+          }
+    ],
+    "footerSocials":
+      {
+          "twitter": "https://twitter.com/powerapi_com",
+          "linkedin": "https://www.linkedin.com/company/powerapi/"
+      }
+  }
